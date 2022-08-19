@@ -1,82 +1,88 @@
-import React, { useState, useContext } from 'react';
-import Logo from '../../olx-logo.png';
-import { FirebaseContext } from '../../store/FirebaseContext';
-import { useHistory } from 'react-router-dom';
-import './Signup.css';
+import React, { useState, useContext } from 'react'
+import Logo from '../../olx-logo.png'
+import { FirebaseContext } from '../../store/FirebaseContext'
+import { useHistory } from 'react-router-dom'
+import './Signup.css'
 
 export default function Signup() {
   const history = useHistory()
-  const [username, setUsername] = useState('');
-  const [email,setEmail] = useState('');
-  const [phone,setPhone] = useState('');
-  const [password,setPassword] = useState('');
-  const {firebase} = useContext(FirebaseContext);
-  const onhandleSubmit = (e)=>{
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [password, setPassword] = useState('')
+  const { firebase } = useContext(FirebaseContext)
+  const onhandleSubmit = (e) => {
     e.preventDefault()
-    firebase.auth().createUserWithEmailAndPassword(email,password).then((result=>{
-      result.user.updateProfile({displayName:username})
-      .then(()=>{
-        firebase.firestore().collection('users').add({
-          id:result.user.uid,
-          username:username,
-          phone:phone
-        }).then(()=>{
-          history.push('/')
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        result.user.updateProfile({ displayName: username }).then(() => {
+          firebase
+            .firestore()
+            .collection('users')
+            .add({
+              id: result.user.uid,
+              username: username,
+              phone: phone,
+            })
+            .then(() => {
+              history.push('/')
+            })
         })
       })
-    }))
-  } 
+  }
   return (
     <div>
-      <div className="signupParentDiv">
-        <img width="200px" height="200px" src={Logo} alt=''></img>
+      <div className='signupParentDiv'>
+        <img width='200px' height='200px' src={Logo} alt=''></img>
         <form onSubmit={onhandleSubmit}>
-          <label htmlFor="fname">Username</label>
+          <label htmlFor='fname'>Username</label>
           <br />
           <input
-            className="input"
-            type="text"
+            className='input'
+            type='text'
             value={username}
-            onChange={(e)=>setUsername(e.target.value)}
-            id="fname"
-            name="name"
-            defaultValue="John"
+            onChange={(e) => setUsername(e.target.value)}
+            id='fname'
+            name='name'
+            defaultValue='John'
           />
           <br />
-          <label htmlFor="fname">Email</label>
+          <label htmlFor='fname'>Email</label>
           <br />
           <input
-            className="input"
-            type="email"
+            className='input'
+            type='email'
             value={email}
-            onChange= {(e)=>setEmail(e.target.value)}
-            id="fname"
-            name="email"
-            defaultValue="John"
+            onChange={(e) => setEmail(e.target.value)}
+            id='fname'
+            name='email'
+            defaultValue='John'
           />
           <br />
-          <label htmlFor="lname">Phone</label>
+          <label htmlFor='lname'>Phone</label>
           <br />
           <input
-            className="input"
-            type="number"
+            className='input'
+            type='number'
             value={phone}
-            onChange={(e)=>setPhone(e.target.value)}
-            id="lname"
-            name="phone"
-            defaultValue="Doe"
+            onChange={(e) => setPhone(e.target.value)}
+            id='lname'
+            name='phone'
+            defaultValue='Doe'
           />
           <br />
-          <label htmlFor="lname">Password</label>
+          <label htmlFor='lname'>Password</label>
           <br />
           <input
-            className="input"
-            type="password"
+            className='input'
+            type='password'
             value={password}
-            onChange= {(e)=>setPassword(e.target.value)}
-            id="lname"
-            name="password"
-            defaultValue="Doe"
+            onChange={(e) => setPassword(e.target.value)}
+            id='lname'
+            name='password'
+            defaultValue='Doe'
           />
           <br />
           <br />
@@ -85,5 +91,5 @@ export default function Signup() {
         <a href='/login'>Login</a>
       </div>
     </div>
-  );
+  )
 }

@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-import './Footer.css';
+import './Footer.css'
 
 function Footer() {
   return (
-    <div className="footerParentDiv">
-      <div className="content">
+    <div className='footerParentDiv'>
+      <div className='content'>
         <div>
-          <div className="heading">
+          <div className='heading'>
             <p>POPULAR LOCATIONS</p>
           </div>
-          <div className="list">
+          <div className='list'>
             <ul>
               <li>kolkata</li>
               <li>Mumbai</li>
@@ -20,10 +20,10 @@ function Footer() {
           </div>
         </div>
         <div>
-          <div className="heading">
+          <div className='heading'>
             <p>ABOUT US</p>
           </div>
-          <div className="list">
+          <div className='list'>
             <ul>
               <li>About OLX Group</li>
               <li>Careers</li>
@@ -33,10 +33,10 @@ function Footer() {
           </div>
         </div>
         <div>
-          <div className="heading">
+          <div className='heading'>
             <p>OLX</p>
           </div>
-          <div className="list">
+          <div className='list'>
             <ul>
               <li>Help</li>
               <li>Sitemap</li>
@@ -45,12 +45,12 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer">
+      <div className='footer'>
         <p>Other Countries Pakistan - South Africa - Indonesia</p>
-        <p>Free Classifieds in India. © 2006-2021 OLX</p>
+        <p>Free Classifieds in India. © 2006-2022 OLX</p>
       </div>
     </div>
-  );
+  )
 }
 
-export default Footer;
+export default Footer
